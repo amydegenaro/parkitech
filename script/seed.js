@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, List, Ticket} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -13,6 +13,37 @@ async function seed() {
   ])
 
   console.log(`seeded ${users.length} users`)
+
+  const maintenance = await List.create({name: 'Maintenance'})
+  const horticulture = await List.create({name: 'Horticulture'})
+  const events = await List.create({name: 'Events'})
+
+  console.log(`seeded lists`)
+
+  const sidewalk = await Ticket.create({
+    name: 'Fix sidewalk',
+    priority: 'high',
+    description: 'The sidewalk is broken and a trip hazard.'
+  })
+  const tent = await Ticket.create({
+    name: 'Set up tent',
+    priority: 'medium',
+    description: 'Supervise tent sent up for event this weekend.'
+  })
+  const bulbs = await Ticket.create({
+    name: 'Plant tulip bulbs',
+    priority: 'low',
+    description: 'Plant 100 new tulip bulbs near the harborwalk for next year.'
+  })
+
+  console.log(`seeded tickets`)
+
+  await Promise.all([
+    sidewalk.setList(maintenance),
+    tent.setList(events),
+    bulbs.setList(horticulture)
+  ])
+
   console.log(`seeded successfully`)
 }
 
