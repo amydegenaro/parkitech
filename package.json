@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "parkitech",
   "version": "1.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "One stop shopping for park management",
   "engines": {
     "node": ">= 7.0.0"
   },
@@ -42,6 +42,7 @@
     "express": "^4.14.1",
     "express-session": "^1.15.1",
     "history": "^4.6.3",
+    "mapbox-gl": "^0.47.0",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",

@@ -4,5 +4,11 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
-export {default as UserHome} from './user-home'
+export {default as Dashboard} from './Dashboard'
+export {default as MapView} from './MapView'
 export {Login, Signup} from './auth-form'
+
+// HOME DASHBOARD
+// MAP VIEW
+// SUBMIT A TICKET
+// USER ACCOUNT
