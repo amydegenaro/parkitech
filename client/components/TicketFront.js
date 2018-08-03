@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const TicketFront = props => {
   const {ticket} = props
@@ -6,8 +7,10 @@ const TicketFront = props => {
   return (
     <div>
       <p>{ticket.name}</p>
-      {/* static map */}
-      <button>Details</button>
+      {/* static map or pin if geotagged */}
+      <Link to={`/tasks/${ticket.id}`}>
+        <button>Details</button>
+      </Link>
     </div>
   )
 }

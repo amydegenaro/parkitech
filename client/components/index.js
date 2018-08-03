@@ -7,6 +7,7 @@ export {default as Navbar} from './navbar'
 export {default as Dashboard} from './Dashboard'
 export {default as MapView} from './MapView'
 export {default as TaskView} from './TaskView'
+export {default as TicketBack} from './TicketBack'
 export {Login, Signup} from './auth-form'
 
 // HOME DASHBOARD

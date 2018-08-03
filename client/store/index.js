@@ -5,8 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import allLists from './lists'
 import allTickets from './tickets'
+import currentTicket from './currentTicket'
 
-const reducer = combineReducers({user, allLists, allTickets})
+const reducer = combineReducers({user, allLists, allTickets, currentTicket})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
@@ -16,3 +17,4 @@ export default store
 export * from './user'
 export * from './lists'
 export * from './tickets'
+export * from './currentTicket'

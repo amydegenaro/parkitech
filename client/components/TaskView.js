@@ -19,6 +19,7 @@ class TaskView extends Component {
           )
           return <List key={list.id} list={list} tickets={tickets} />
         })}
+        <button>New List</button>
       </div>
     )
   }
