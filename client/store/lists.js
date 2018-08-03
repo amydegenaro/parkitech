@@ -1,16 +1,16 @@
 import axios from 'axios'
 
-const GOT_LISTS = 'GOT_LISTS'
+const GOT_ALL_LISTS = 'GOT_ALL_LISTS'
 
-const gotLists = lists => ({
-  type: GOT_LISTS,
+const gotAllLists = lists => ({
+  type: GOT_ALL_LISTS,
   lists
 })
 
-export const getLists = () => async dispatch => {
+export const getAllLists = () => async dispatch => {
   try {
-    const {data} = axios.get('/api/lists/')
-    dispatch(gotLists(data))
+    const {data} = await axios.get('/api/lists/')
+    dispatch(gotAllLists(data))
   } catch (err) {
     console.error(err)
   }
@@ -18,7 +18,7 @@ export const getLists = () => async dispatch => {
 
 export default function(state = [], action) {
   switch (action.type) {
-    case GOT_LISTS:
+    case GOT_ALL_LISTS:
       return action.lists
     default:
       return state

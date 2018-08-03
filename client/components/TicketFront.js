@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TicketFront = props => {
+const TicketFront = props => {
   const {ticket} = props
 
   return (
@@ -11,3 +11,5 @@ export const TicketFront = props => {
     </div>
   )
 }
+
+export default TicketFront

@@ -1,14 +1,16 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {TicketFront} from './TicketFront'
 
-export const List = props => {
-  const {list, tickets} = props
-
+const List = props => {
   return (
     <div>
-      <p>{list.name}</p>
-      {tickets.map(ticket => <TicketFront key={ticket.id} />)}
+      <p>{props.list.name}</p>
+      {props.tickets.map(ticket => (
+        <TicketFront key={ticket.id} ticket={ticket} />
+      ))}
+      <button>Add Task</button>
     </div>
   )
 }
+
+export default List
