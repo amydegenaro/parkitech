@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {List} from './index'
+import List from './List'
 import {getAllLists, getAllTickets} from '../store'
 
 class TaskView extends Component {

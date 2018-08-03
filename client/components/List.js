@@ -1,5 +1,5 @@
 import React from 'react'
-import {TicketFront} from './TicketFront'
+import TicketFront from './TicketFront'
 
 const List = props => {
   return (
