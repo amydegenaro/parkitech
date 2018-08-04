@@ -1,11 +1,22 @@
 const router = require('express').Router()
-const {Ticket} = require('../db/models')
+const {Ticket, List} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
     const tickets = await Ticket.findAll()
     res.json(tickets)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.post('/list/:listId', async (req, res, next) => {
+  try {
+    const list = await List.findById(req.params.listId)
+    const ticket = await Ticket.create(req.body)
+    await ticket.setList(list)
+    res.json(ticket)
   } catch (err) {
     next(err)
   }

@@ -3,7 +3,7 @@ import TicketFront from './TicketFront'
 import {Link} from 'react-router-dom'
 
 const List = props => {
-  const {handleDrag} = props
+  const {handleDrag, list} = props
 
   return (
     <div className="list" onDragOver={handleDrag}>
@@ -11,7 +11,7 @@ const List = props => {
       {props.tickets.map(ticket => (
         <TicketFront key={ticket.id} ticket={ticket} />
       ))}
-      <Link to="/tasks/add">
+      <Link to={`/tasks/list/${list.id}/add`}>
         <button>Add Task</button>
       </Link>
     </div>
