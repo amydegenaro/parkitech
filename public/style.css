@@ -29,6 +29,7 @@ form div {
 .list-item {
   display: flex;
   flex-direction: row;
+  margin: 5px;
   padding: 10px;
   height: 1.5em;
   background-color: white;

@@ -35,6 +35,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div className="topnav" id="myTopNav">
           {/* The navbar will show these links before you log in */}
+          <a href="#">Menu</a>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <a href="#" className="icon" onClick={toggleNav}>
