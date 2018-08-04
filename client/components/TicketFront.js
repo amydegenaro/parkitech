@@ -5,7 +5,7 @@ const TicketFront = props => {
   const {ticket} = props
 
   return (
-    <div>
+    <div className="list-item" draggable>
       <p>{ticket.name}</p>
       {/* static map or pin if geotagged */}
       <Link to={`/tasks/${ticket.id}`}>

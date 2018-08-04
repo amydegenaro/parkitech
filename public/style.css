@@ -20,7 +20,32 @@ form div {
   display: inline-block;
 }
 
-/* NAVBAR */
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  height: 1.5em;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.5em;
+  z-index: 100;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(245, 245, 245);
+  border-radius: 0.5em;
+  margin: 5px;
+}
+
+/* --------------NAVBAR-------------- */
 
 /* Add a black background color to the top navigation */
 .topnav {
