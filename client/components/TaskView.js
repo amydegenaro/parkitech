@@ -48,15 +48,7 @@ class TaskView extends Component {
             const tickets = this.props.allTickets.filter(
               ticket => ticket.listId === list.id
             )
-            return (
-              <List
-                key={list.id}
-                list={list}
-                tickets={tickets}
-                handleSubmit={this.handleSubmit}
-                handleChange={this.handleChange}
-              />
-            )
+            return <List key={list.id} list={list} tickets={tickets} />
           })}
         </div>
         {this.state.showListForm ? (

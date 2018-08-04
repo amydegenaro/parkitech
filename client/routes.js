@@ -8,7 +8,8 @@ import {
   Dashboard,
   MapView,
   TaskView,
-  TicketBack
+  TicketBack,
+  AddTicketForm
 } from './components'
 import {me} from './store'
 
@@ -33,7 +34,8 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={Dashboard} />
             <Route exact path="/tasks" component={TaskView} />
-            <Route exact path="/tasks/:id" component={TicketBack} />
+            <Route exact path="/tasks/add" component={AddTicketForm} />
+            <Route path="/tasks/:id" component={TicketBack} />
             <Route path="/map" component={MapView} />
           </Switch>
         )}

@@ -1,9 +1,9 @@
 import React from 'react'
 import TicketFront from './TicketFront'
-import AddTicketForm from './addTicketForm'
+import {Link} from 'react-router-dom'
 
 const List = props => {
-  const {handleDrag, handleSubmit, handleChange} = props
+  const {handleDrag} = props
 
   return (
     <div className="list" onDragOver={handleDrag}>
@@ -11,7 +11,9 @@ const List = props => {
       {props.tickets.map(ticket => (
         <TicketFront key={ticket.id} ticket={ticket} />
       ))}
-      <button>Add Task</button>
+      <Link to="/tasks/add">
+        <button>Add Task</button>
+      </Link>
     </div>
   )
 }
