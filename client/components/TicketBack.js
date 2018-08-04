@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getTicket} from '../store'
+import ReactMapGL, {Marker} from 'react-map-gl'
 
 class TicketBack extends Component {
   componentDidMount() {
@@ -21,11 +22,25 @@ class TicketBack extends Component {
         <p>{description}</p>
         <p>Status: {status}</p>
         <p>Priority: {priority}</p>
-        <p>MAP HERE</p>
+        {latitude ? (
+          <ReactMapGL
+            width={400}
+            height={400}
+            latitude={latitude}
+            longitude={longitude}
+            zoom={12}
+            mapboxApiAccessToken="pk.eyJ1IjoiYW15ZGVnZW5hcm8iLCJhIjoiY2prY29uaXpkMThpdjN3bWltNXN1MjdnZCJ9.PoBLx3hpU-M2Ls-jJF-Qtg"
+          >
+            <Marker latitude={latitude} longitude={longitude} />
+          </ReactMapGL>
+        ) : (
+          <p>Loading coordinates...</p>
+        )}
       </div>
     )
   }
 }
+
 const mapStateToProps = state => ({
   currentTicket: state.currentTicket
 })
