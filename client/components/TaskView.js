@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import List from './List'
-import {getAllLists, getAllTickets} from '../store'
+import {getAllLists, getAllTickets, addList} from '../store'
 import AddListForm from './addListForm'
 
 class TaskView extends Component {
@@ -26,7 +26,8 @@ class TaskView extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    console.log('SUBMITTED', this.state)
+    this.props.addNewList({name: this.state.listName})
+    this.setState({showListForm: false})
   }
 
   handleChange(evt) {
@@ -74,7 +75,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllLists: () => dispatch(getAllLists()),
-  fetchAllTickets: id => dispatch(getAllTickets(id))
+  fetchAllTickets: id => dispatch(getAllTickets(id)),
+  addNewList: list => dispatch(addList(list))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskView)

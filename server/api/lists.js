@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    const list = await List.create(req.body)
+    res.json(list)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id/tickets', async (req, res, next) => {
   try {
     const list = await List.findById(req.params.id)
