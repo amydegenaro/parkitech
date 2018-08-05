@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ReactMapGL, {NavigationControl, Marker} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, Marker, Popup} from 'react-map-gl'
 import {connect} from 'react-redux'
 import ControlPanel from './MapControlPanel'
 import MapPin from './MapPin'
@@ -15,6 +15,23 @@ const navStyle = {
   padding: '10px'
 }
 
+const popUp = task => {
+  console.log('CLICKED POPUP')
+  return (
+    <Popup
+      anchor="top"
+      latitude={task.latitude}
+      longitude={task.longitude}
+      // closeButton={true}
+      // closeOnClick={false}
+    >
+      <div>
+        <p>{task.name}</p>
+      </div>
+    </Popup>
+  )
+}
+
 class MapView extends Component {
   constructor() {
     super()
@@ -24,7 +41,7 @@ class MapView extends Component {
         height: 400,
         latitude: 42.3601,
         longitude: -71.0589,
-        zoom: 11
+        zoom: 13
       },
       visibility: {
         status: 'all',
@@ -37,7 +54,8 @@ class MapView extends Component {
         low: '#2039c6', // blue
         medium: '#f7e922', //yellow
         high: '#c62121' //red
-      }
+      },
+      popupInfo: null
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -69,8 +87,33 @@ class MapView extends Component {
   _renderMarker = task => {
     return (
       <Marker key={task.id} longitude={task.longitude} latitude={task.latitude}>
-        <MapPin size={30} color={this.state.color[task.priority]} />
+        <MapPin
+          size={30}
+          color={this.state.color[task.priority]}
+          task={task}
+          onClick={() => this.setState({popupInfo: task})}
+        />
       </Marker>
+    )
+  }
+
+  _renderPopup = () => {
+    const {popupInfo} = this.state
+
+    return (
+      popupInfo && (
+        <Popup
+          tipSize={5}
+          anchor="top"
+          latitude={popupInfo.latitude}
+          longitude={popupInfo.longitude}
+          onClose={() => this.setState({popupInfo: null})}
+        >
+          <div>
+            <p>{popupInfo.name}</p>
+          </div>
+        </Popup>
+      )
     )
   }
 
@@ -109,10 +152,8 @@ class MapView extends Component {
             containerComponent={this.props.containerComponent}
             handleChange={this.handleChange}
           />
-          {this.state.visibility.status === 'all' &&
-          this.state.visibility.priority === 'all'
-            ? this.props.tasks.map(task => this._renderMarker(task))
-            : mapTasks.map(task => this._renderMarker(task))}
+          {mapTasks.map(task => this._renderMarker(task))}
+          {this._renderPopup()}
         </ReactMapGL>
       </div>
     ) : (
