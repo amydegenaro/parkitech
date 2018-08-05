@@ -48,6 +48,11 @@ form div {
   margin: 10px 20px;
 }
 
+#loading {
+  height: 50px;
+  width: 50px;
+}
+
 .main {
   padding: 0px 10px;
 }
@@ -106,6 +111,31 @@ form div {
   height: 100%;
   box-sizing: border-box;
   display: inline-block;
+  color: rgb(62, 151, 81);
+}
+
+.control-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 12px 24px;
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #6b6b76;
+  outline: none;
+}
+
+.control-label {
+  display: inline-block;
+  width: 100px;
+}
+
+.control-input {
+  margin-left: 20px;
 }
 
 /* --------------NAVBAR-------------- */

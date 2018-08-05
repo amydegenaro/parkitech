@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import ReactMapGL, {NavigationControl} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, Marker} from 'react-map-gl'
+import {connect} from 'react-redux'
+import ControlPanel from './MapControlPanel'
+import MapPin from './MapPin'
+import {getAllTickets} from '../store'
 
 const TOKEN =
   'pk.eyJ1IjoiYW15ZGVnZW5hcm8iLCJhIjoiY2prY29uaXpkMThpdjN3bWltNXN1MjdnZCJ9.PoBLx3hpU-M2Ls-jJF-Qtg'
@@ -21,11 +25,24 @@ class MapView extends Component {
         latitude: 42.3601,
         longitude: -71.0589,
         zoom: 11
+      },
+      visibility: {
+        status: '',
+        priority: ''
+      },
+      color: {
+        open: 'green',
+        assigned: 'purple',
+        closed: 'black',
+        low: '#2039c6', // blue
+        medium: '#f7e922', //yellow
+        high: '#c62121' //red
       }
     }
   }
 
   componentDidMount() {
+    this.props.fetchAllTasks()
     window.addEventListener('resize', this._resize)
     this._resize()
   }
@@ -48,8 +65,17 @@ class MapView extends Component {
     this.setState({viewport})
   }
 
+  handleChange(evt) {
+    this.setState({
+      visibility: {
+        ...this.state.visibility,
+        [evt.target.name]: evt.target.value
+      }
+    })
+  }
+
   render() {
-    return (
+    return this.props.tasks.length > 0 ? (
       <div id="mapview">
         <ReactMapGL
           {...this.state.viewport}
@@ -60,10 +86,36 @@ class MapView extends Component {
           <div className="nav" style={navStyle}>
             <NavigationControl onViewportChange={this._updateViewport} />
           </div>
+          <ControlPanel
+            containerComponent={this.props.containerComponent}
+            handleChange={this.handleChange}
+          />
+          {this.props.tasks.map(task => (
+            <Marker
+              key={task.id}
+              longitude={task.longitude}
+              latitude={task.latitude}
+            >
+              <MapPin size={30} color={this.state.color[task.priority]} />
+            </Marker>
+          ))}
         </ReactMapGL>
       </div>
+    ) : (
+      <img
+        id="loading"
+        src="https://thumbs.gfycat.com/SkinnySeveralAsianlion-size_restricted.gif"
+      />
     )
   }
 }
 
-export default MapView
+const mapStateToProps = state => ({
+  tasks: state.allTickets
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchAllTasks: () => dispatch(getAllTickets())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapView)

@@ -5,20 +5,22 @@ const ADDED_TICKET = 'ADDED_TICKET'
 
 const gotAllTickets = tickets => ({
   type: GOT_ALL_TICKETS,
-  tickets: tickets.map(ticket => ({
-    id: ticket.id,
-    name: ticket.name,
-    listId: ticket.listId
-  }))
+  tickets
+  // tickets: tickets.map(ticket => ({
+  //   id: ticket.id,
+  //   name: ticket.name,
+  //   listId: ticket.listId
+  // }))
 })
 
 const addedTicket = ticket => ({
   type: ADDED_TICKET,
-  ticket: {
-    id: ticket.id,
-    name: ticket.name,
-    listId: ticket.listId
-  }
+  ticket
+  // ticket: {
+  //   id: ticket.id,
+  //   name: ticket.name,
+  //   listId: ticket.listId
+  // }
 })
 
 export const getAllTickets = () => async dispatch => {
