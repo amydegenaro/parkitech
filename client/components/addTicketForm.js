@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import ReactMapGl from 'react-map-gl'
 import {addTicket} from '../store'
 
+const TOKEN =
+  'pk.eyJ1IjoiYW15ZGVnZW5hcm8iLCJhIjoiY2prY29uaXpkMThpdjN3bWltNXN1MjdnZCJ9.PoBLx3hpU-M2Ls-jJF-Qtg'
+
 class AddTicketForm extends Component {
   constructor() {
     super()
@@ -105,7 +108,8 @@ class AddTicketForm extends Component {
         <ReactMapGl
           {...this.state.viewport}
           onViewportChange={viewport => this.setState({viewport})}
-          mapboxApiAccessToken="pk.eyJ1IjoiYW15ZGVnZW5hcm8iLCJhIjoiY2prY29uaXpkMThpdjN3bWltNXN1MjdnZCJ9.PoBLx3hpU-M2Ls-jJF-Qtg"
+          mapboxApiAccessToken={TOKEN}
+          mapStyle="mapbox://styles/mapbox/outdoors-v9"
         />
         <button type="submit">Add Task</button>
       </form>
