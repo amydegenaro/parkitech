@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ReactMapGL, {Marker} from 'react-map-gl'
 import {addTicket} from '../store'
-
 import MapPin from './MapPin'
 
 const TOKEN =
@@ -75,9 +74,6 @@ class AddTicketForm extends Component {
   getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(
       position => {
-        console.log(
-          `lat: ${position.coords.latitude}, long: ${position.coords.longitude}`
-        )
         this.setState({
           viewport: {
             ...this.state.viewport,
@@ -147,14 +143,14 @@ class AddTicketForm extends Component {
               </div>
             </div>
 
-            <label htmlFor="location">Task Location (select below)</label>
+            <label htmlFor="location">Task Location (find on map)</label>
             <button
               type="button"
               name="location"
               className="form-control btn btn-success"
               onClick={this.getCurrentLocation}
             >
-              Current Location
+              Go to Current Location
             </button>
           </div>
 

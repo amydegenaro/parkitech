@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const GOT_ALL_TICKETS = 'GOT_ALL_TICKETS'
 const ADDED_TICKET = 'ADDED_TICKET'
+const UPDATED_TICKET = 'UPDATED_TICKET'
 
 const gotAllTickets = tickets => ({
   type: GOT_ALL_TICKETS,
@@ -23,6 +24,11 @@ const addedTicket = ticket => ({
   // }
 })
 
+const updatedTicket = ticket => ({
+  type: UPDATED_TICKET,
+  ticket
+})
+
 export const getAllTickets = () => async dispatch => {
   try {
     const {data} = await axios.get(`/api/tickets/`)
@@ -41,12 +47,31 @@ export const addTicket = (ticket, listId) => async dispatch => {
   }
 }
 
+export const updateTicket = (ticket, listId, ticketId) => async dispatch => {
+  try {
+    const {data} = await axios.put(`/api/tickets/${ticketId}`, {
+      ticket,
+      listId
+    })
+    console.log('RETURN THUNK DATA', data)
+    dispatch(updatedTicket(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export default function(state = [], action) {
   switch (action.type) {
     case GOT_ALL_TICKETS:
       return action.tickets
     case ADDED_TICKET:
       return [...state, action.ticket]
+    case UPDATED_TICKET:
+      return state.map(ticket => {
+        if (ticket.id === action.ticket.id) {
+          return action.ticket
+        } else return ticket
+      })
     default:
       return state
   }
