@@ -15,8 +15,10 @@ function toggleNav() {
 }
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>PARKitech</h1>
+  <div className="navbar">
+    <Link to="/home">
+      <h2 id="header">parkitech</h2>
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div className="topnav" id="myTopNav">
@@ -44,7 +46,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 

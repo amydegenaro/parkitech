@@ -20,7 +20,7 @@ class MapView extends Component {
         height: 400,
         latitude: 42.3601,
         longitude: -71.0589,
-        zoom: 8
+        zoom: 11
       }
     }
   }

@@ -5,30 +5,8 @@ import {connect} from 'react-redux'
 /**
  * COMPONENT
  */
-function getLocation() {
-  const location = {}
-  if (!navigator.geolocation) {
-    alert('Geolocation is not supported by this browser!')
-  }
-  //This will make appear a pop up asking for permission
-  navigator.geolocation.getCurrentPosition(showPosition, error)
-  //In case the permission is granted
-  function showPosition(position) {
-    location.lat = position.coords.latitude
-    location.long = position.coords.longitude
-  }
-  //In case the permission is denied
-  function error() {
-    alert(
-      'Unable to retrieve your location! Allow the browser to share your location.'
-    )
-  }
-  return location
-}
-
 export const UserHome = props => {
   const {email} = props
-  getLocation()
 
   return (
     <div>
