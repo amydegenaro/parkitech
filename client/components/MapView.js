@@ -27,8 +27,8 @@ class MapView extends Component {
         zoom: 11
       },
       visibility: {
-        status: '',
-        priority: ''
+        status: 'all',
+        priority: 'all'
       },
       color: {
         open: 'green',
@@ -39,6 +39,7 @@ class MapView extends Component {
         high: '#c62121' //red
       }
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -65,6 +66,14 @@ class MapView extends Component {
     this.setState({viewport})
   }
 
+  _renderMarker = task => {
+    return (
+      <Marker key={task.id} longitude={task.longitude} latitude={task.latitude}>
+        <MapPin size={30} color={this.state.color[task.priority]} />
+      </Marker>
+    )
+  }
+
   handleChange(evt) {
     this.setState({
       visibility: {
@@ -75,6 +84,16 @@ class MapView extends Component {
   }
 
   render() {
+    const mapTasks = this.props.tasks
+      .filter(task => {
+        if (this.state.visibility.status === 'all') return task
+        else return task.status === this.state.visibility.status
+      })
+      .filter(task => {
+        if (this.state.visibility.priority === 'all') return task
+        else return task.priority === this.state.visibility.priority
+      })
+
     return this.props.tasks.length > 0 ? (
       <div id="mapview">
         <ReactMapGL
@@ -90,15 +109,10 @@ class MapView extends Component {
             containerComponent={this.props.containerComponent}
             handleChange={this.handleChange}
           />
-          {this.props.tasks.map(task => (
-            <Marker
-              key={task.id}
-              longitude={task.longitude}
-              latitude={task.latitude}
-            >
-              <MapPin size={30} color={this.state.color[task.priority]} />
-            </Marker>
-          ))}
+          {this.state.visibility.status === 'all' &&
+          this.state.visibility.priority === 'all'
+            ? this.props.tasks.map(task => this._renderMarker(task))
+            : mapTasks.map(task => this._renderMarker(task))}
         </ReactMapGL>
       </div>
     ) : (
