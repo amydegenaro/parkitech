@@ -50,16 +50,18 @@ class MapView extends Component {
 
   render() {
     return (
-      <ReactMapGL
-        {...this.state.viewport}
-        onViewportChange={this._updateViewport}
-        mapboxApiAccessToken={TOKEN}
-        mapStyle="mapbox://styles/mapbox/outdoors-v9"
-      >
-        <div className="nav" style={navStyle}>
-          <NavigationControl onViewportChange={this._updateViewport} />
-        </div>
-      </ReactMapGL>
+      <div id="mapview">
+        <ReactMapGL
+          {...this.state.viewport}
+          onViewportChange={this._updateViewport}
+          mapboxApiAccessToken={TOKEN}
+          mapStyle="mapbox://styles/mapbox/outdoors-v9"
+        >
+          <div className="nav" style={navStyle}>
+            <NavigationControl onViewportChange={this._updateViewport} />
+          </div>
+        </ReactMapGL>
+      </div>
     )
   }
 }

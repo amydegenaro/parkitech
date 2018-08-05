@@ -42,8 +42,8 @@ class TaskView extends Component {
 
   render() {
     return (
-      <div>
-        <p>Lists</p>
+      <div className="main">
+        <h3>Lists</h3>
         <div className="list-container">
           {this.props.allLists.map(list => {
             const tickets = this.props.allTickets.filter(

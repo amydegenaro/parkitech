@@ -15,7 +15,7 @@ function toggleNav() {
 }
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div className="navbar">
+  <div id="navbar">
     <Link to="/home">
       <h2 id="header">parkitech</h2>
     </Link>

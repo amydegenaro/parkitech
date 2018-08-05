@@ -9,9 +9,11 @@ export const UserHome = props => {
   const {email} = props
 
   return (
-    <div>
+    <div className="main">
       <h3>Welcome, {email}</h3>
       <div>
+        <p>Weather</p>
+        <p>Data viz</p>
         {/* <p>
           Your location is:{' '}
           {location.lat
