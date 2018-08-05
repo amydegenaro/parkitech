@@ -26,24 +26,36 @@ nav a {
 }
 
 form div {
-  margin: 1em;
+  /* margin: 1em; */
   display: inline-block;
 }
 
 #header {
   font-family: 'Megrim', cursive;
-  padding-left: 17px;
+  padding-left: 0.5em;
   margin: 0;
   color: white;
   font-size: 2.5em;
+}
+
+#task-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
   padding: 0px 10px;
 }
 
-.flexbox {
+.flex-column {
   display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .list-container {

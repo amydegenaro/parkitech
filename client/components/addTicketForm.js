@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import ReactMapGl from 'react-map-gl'
+import ReactMapGL from 'react-map-gl'
 import {addTicket} from '../store'
 
 const TOKEN =
@@ -15,8 +15,8 @@ class AddTicketForm extends Component {
       priority: 'low',
       description: '',
       viewport: {
-        width: 400,
-        height: 400,
+        width: window.innerWidth,
+        height: window.innerHeight,
         latitude: 42.3601,
         longitude: -71.0589,
         zoom: 12
@@ -25,6 +25,29 @@ class AddTicketForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getCurrentLocation = this.getCurrentLocation.bind(this)
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this._resize)
+    this._resize()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._resize)
+  }
+
+  _resize = () => {
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        width: this.props.width || window.innerWidth,
+        height: this.props.height || window.innerHeight
+      }
+    })
+  }
+
+  _updateViewport = viewport => {
+    this.setState({viewport})
   }
 
   handleSubmit(evt) {
@@ -55,11 +78,9 @@ class AddTicketForm extends Component {
         )
         this.setState({
           viewport: {
-            width: 400,
-            height: 400,
+            ...this.state.viewport,
             latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            zoom: 12
+            longitude: position.coords.longitude
           }
         })
       },
@@ -71,48 +92,54 @@ class AddTicketForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          onChange={this.handleChange}
-          name="taskName"
-          placeholder="Task Name"
-        />
-        <textarea
-          onChange={this.handleChange}
-          name="description"
-          placeholder="Description"
-        />
-        <label name="status">Status</label>
-        <select
-          onChange={this.handleChange}
-          name="status"
-          value={this.state.status}
-        >
-          <option value="open">Open</option>
-          <option value="assigned">Assigned</option>
-          <option value="closed">Closed</option>
-        </select>
-        <label name="priority">Priority</label>
-        <select
-          onChange={this.handleChange}
-          name="priority"
-          value={this.state.priority}
-        >
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
-        </select>
-        <button type="button" onClick={this.getCurrentLocation}>
-          Current Location
-        </button>
-        <ReactMapGl
-          {...this.state.viewport}
-          onViewportChange={viewport => this.setState({viewport})}
-          mapboxApiAccessToken={TOKEN}
-          mapStyle="mapbox://styles/mapbox/outdoors-v9"
-        />
-        <button type="submit">Add Task</button>
-      </form>
+      <div>
+        <form id="task-form" onSubmit={this.handleSubmit}>
+          <button type="submit">Add Task</button>
+          <div>
+            <input
+              onChange={this.handleChange}
+              name="taskName"
+              placeholder="Task Name"
+            />
+            <textarea
+              onChange={this.handleChange}
+              name="description"
+              placeholder="Description"
+            />
+            <label htmlFor="status">Status</label>
+            <select
+              onChange={this.handleChange}
+              name="status"
+              value={this.state.status}
+            >
+              <option value="open">Open</option>
+              <option value="assigned">Assigned</option>
+              <option value="closed">Closed</option>
+            </select>
+            <label htmlFor="priority">Priority</label>
+            <select
+              onChange={this.handleChange}
+              name="priority"
+              value={this.state.priority}
+            >
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div className="flex-column">
+            <button type="button" onClick={this.getCurrentLocation}>
+              Current Location
+            </button>
+            <ReactMapGL
+              {...this.state.viewport}
+              onViewportChange={this._updateViewport}
+              mapboxApiAccessToken={TOKEN}
+              mapStyle="mapbox://styles/mapbox/outdoors-v9"
+            />
+          </div>
+        </form>
+      </div>
     )
   }
 }
