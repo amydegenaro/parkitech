@@ -48,6 +48,31 @@ form div {
   margin: 10px 20px;
 }
 
+#auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  margin: auto;
+  width: 50%;
+  min-width: 300px;
+}
+
+#auth-wrapper img {
+  height: 40px;
+  max-width: 200px;
+}
+
+#auth-wrapper div {
+  margin: 10px;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 #loading {
   height: 50px;
   width: 50px;
@@ -172,7 +197,7 @@ form div {
 /* Change the color of links on hover */
 .topnav a:hover {
   /* background-color: #ddd; */
-  color: tan;
+  color: rgb(250, 244, 161);
 }
 
 /* Hide the link that should open and close the topnav on small screens */
