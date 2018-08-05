@@ -16,7 +16,7 @@ class AddTicketForm extends Component {
       description: '',
       viewport: {
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: 400,
         latitude: 42.3601,
         longitude: -71.0589,
         zoom: 12
@@ -40,8 +40,8 @@ class AddTicketForm extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth,
-        height: this.props.height || window.innerHeight
+        width: this.props.width || window.innerWidth
+        // height: this.props.height || window.innerHeight
       }
     })
   }

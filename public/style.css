@@ -41,6 +41,7 @@ form div {
 #task-form {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .main {
