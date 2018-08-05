@@ -6,10 +6,9 @@ const TicketFront = props => {
 
   return (
     <div className="list-item" draggable>
-      <p>{ticket.name}</p>
       {/* static map or pin if geotagged */}
-      <Link to={`/tasks/${ticket.id}`}>
-        <button>Details</button>
+      <Link className="task-header" to={`/tasks/${ticket.id}`}>
+        {ticket.name}
       </Link>
     </div>
   )

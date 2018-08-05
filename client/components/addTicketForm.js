@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import ReactMapGL from 'react-map-gl'
+import ReactMapGL, {Marker} from 'react-map-gl'
 import {addTicket} from '../store'
+
+import MapPin from './MapPin'
 
 const TOKEN =
   'pk.eyJ1IjoiYW15ZGVnZW5hcm8iLCJhIjoiY2prY29uaXpkMThpdjN3bWltNXN1MjdnZCJ9.PoBLx3hpU-M2Ls-jJF-Qtg'
@@ -19,7 +21,7 @@ class AddTicketForm extends Component {
         height: 400,
         latitude: 42.3601,
         longitude: -71.0589,
-        zoom: 12
+        zoom: 14
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -93,50 +95,83 @@ class AddTicketForm extends Component {
   render() {
     return (
       <div>
-        <form id="task-form" onSubmit={this.handleSubmit}>
-          <button type="submit">Add Task</button>
-          <div>
-            <input
-              onChange={this.handleChange}
-              name="taskName"
-              placeholder="Task Name"
-            />
-            <textarea
-              onChange={this.handleChange}
-              name="description"
-              placeholder="Description"
-            />
-            <label htmlFor="status">Status</label>
-            <select
-              onChange={this.handleChange}
-              name="status"
-              value={this.state.status}
+        <form onSubmit={this.handleSubmit}>
+          <div id="form-wrapper" className="flex-column">
+            <button className="form-control btn btn-primary" type="submit">
+              Add Task
+            </button>
+            <div className="form-group">
+              <label htmlFor="taskName">Name</label>
+              <input
+                onChange={this.handleChange}
+                name="taskName"
+                placeholder="Task Name"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <textarea
+                onChange={this.handleChange}
+                name="description"
+                placeholder="Description"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group row">
+              <div className="col-auto">
+                <label htmlFor="status">Status</label>
+                <select
+                  onChange={this.handleChange}
+                  name="status"
+                  value={this.state.status}
+                  className="form-control"
+                >
+                  <option value="open">Open</option>
+                  <option value="assigned">Assigned</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+              <div className="col-auto">
+                <label htmlFor="priority">Priority</label>
+                <select
+                  onChange={this.handleChange}
+                  name="priority"
+                  value={this.state.priority}
+                  className="form-control"
+                >
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <label htmlFor="location">Task Location (select below)</label>
+            <button
+              type="button"
+              name="location"
+              className="form-control btn btn-success"
+              onClick={this.getCurrentLocation}
             >
-              <option value="open">Open</option>
-              <option value="assigned">Assigned</option>
-              <option value="closed">Closed</option>
-            </select>
-            <label htmlFor="priority">Priority</label>
-            <select
-              onChange={this.handleChange}
-              name="priority"
-              value={this.state.priority}
-            >
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-          </div>
-          <div className="flex-column">
-            <button type="button" onClick={this.getCurrentLocation}>
               Current Location
             </button>
+          </div>
+
+          <div className="flex-column">
             <ReactMapGL
               {...this.state.viewport}
               onViewportChange={this._updateViewport}
               mapboxApiAccessToken={TOKEN}
               mapStyle="mapbox://styles/mapbox/outdoors-v9"
-            />
+            >
+              <Marker
+                longitude={this.state.viewport.longitude}
+                latitude={this.state.viewport.latitude}
+              >
+                <MapPin size={30} />
+              </Marker>
+            </ReactMapGL>{' '}
           </div>
         </form>
       </div>

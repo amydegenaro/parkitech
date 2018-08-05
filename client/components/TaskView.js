@@ -43,7 +43,9 @@ class TaskView extends Component {
   render() {
     return (
       <div className="main">
-        <h3>Lists</h3>
+        <div>
+          <h3>Lists</h3>
+        </div>
         <div className="list-container">
           {this.props.allLists.map(list => {
             const tickets = this.props.allTickets.filter(
@@ -51,18 +53,24 @@ class TaskView extends Component {
             )
             return <List key={list.id} list={list} tickets={tickets} />
           })}
-        </div>
-        {this.state.showListForm ? (
-          <div>
-            <button onClick={this.showForm}>Cancel</button>
-            <AddListForm
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
-            />
+          <div className="list">
+            {this.state.showListForm ? (
+              <div className="flex-column list-item">
+                <button className="task-header" onClick={this.showForm}>
+                  Cancel
+                </button>
+                <AddListForm
+                  handleSubmit={this.handleSubmit}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            ) : (
+              <a className="list-header" onClick={this.showForm}>
+                Add another list
+              </a>
+            )}
           </div>
-        ) : (
-          <button onClick={this.showForm}>New List</button>
-        )}
+        </div>
       </div>
     )
   }

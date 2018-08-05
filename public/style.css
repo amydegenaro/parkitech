@@ -4,9 +4,9 @@ html {
   padding: 0;
 }
 
-/* html {
-  background-color: rgb(176, 214, 176);
-} */
+html {
+  /* background-color: #e0e2c8; */
+}
 
 body {
   font-family: 'Roboto Slab', serif;
@@ -38,10 +38,14 @@ form div {
   font-size: 2.5em;
 }
 
-#task-form {
+/* #task-form {
   display: flex;
   flex-direction: column;
   height: 100vh;
+} */
+
+#form-wrapper {
+  margin: 10px 20px;
 }
 
 .main {
@@ -63,32 +67,45 @@ form div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* overflow: scroll; */
 }
 
 .list-item {
   display: flex;
   flex-direction: row;
-  margin: 5px;
-  padding: 10px;
-  height: 1.5em;
-  width: 80%;
-  background-color: white;
-  border: 1px solid lightgray;
-  border-radius: 0.5em;
-  z-index: 200;
-  font-size: 1em;
+  margin: 10px;
+  margin-bottom: 8px;
+  max-width: 300px;
+  min-height: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #ccc;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.list-header {
+  margin: 0.8em;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.task-header {
+  font-size: 14px;
+  margin: 0.5em;
 }
 
 .list {
+  background: #e2e4e6;
+  border-radius: 3px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-color: rgb(245, 245, 245);
-  border-radius: 0.5em;
-  margin: 5px;
-  /* width: 90vw; */
-  min-width: 300px;
+  width: 100%;
+  max-width: 350px;
+  margin: 6px;
+  height: 100%;
+  box-sizing: border-box;
+  display: inline-block;
 }
 
 /* --------------NAVBAR-------------- */
@@ -96,7 +113,7 @@ form div {
 /* Add a black background color to the top navigation */
 
 #navbar {
-  background-color: rgb(38, 61, 38);
+  background-color: #003d29;
   z-index: 100;
   width: 100%;
   margin: 0;
@@ -125,7 +142,7 @@ form div {
 /* Change the color of links on hover */
 .topnav a:hover {
   /* background-color: #ddd; */
-  color: gold;
+  color: tan;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
