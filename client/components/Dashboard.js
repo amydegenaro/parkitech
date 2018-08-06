@@ -16,14 +16,20 @@ export const UserHome = props => {
         type="button"
         className="btn btn-primary"
         onClick={() => {
-          navigator.geolocation.getCurrentPosition(
-            pos => {
-              fetchWeather([pos.coords.latitude, pos.coords.longitude])
-            },
-            () => {
-              alert('Unable to retrieve location.')
-            }
-          )
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              pos => {
+                fetchWeather([pos.coords.latitude, pos.coords.longitude])
+              },
+              () => {
+                alert('Unable to retrieve location')
+              },
+              {
+                enableHighAccuracy: true,
+                timeout: 30000
+              }
+            )
+          } else alert('Geolocation not supported')
         }}
       >
         Get weather

@@ -74,21 +74,27 @@ class AddTicketForm extends Component {
 
   getCurrentLocation() {
     this.setState({loading: true})
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          loading: false,
-          viewport: {
-            ...this.state.viewport,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude
-          }
-        })
-      },
-      () => {
-        alert('Unable to retrieve location.')
-      }
-    )
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({
+            loading: false,
+            viewport: {
+              ...this.state.viewport,
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            }
+          })
+        },
+        () => {
+          alert('Unable to retrieve location.')
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 30000
+        }
+      )
+    } else alert('Geolocation not supported')
   }
 
   render() {

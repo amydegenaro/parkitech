@@ -9,11 +9,11 @@ const ControlPanel = props => {
 
   return (
     <Container>
-      <h3>Task Filters</h3>
-      <p>Select below to view by status and priority.</p>
-      <hr />
+      <h3>Filter Tasks</h3>
+      {/* <p>Select below to view by status and priority.</p> */}
+      {/* <hr /> */}
       <form>
-        <div className="col-auto">
+        <div className="col-auto form-group">
           <label htmlFor="status">Status</label>
           <select
             onChange={props.handleChange}
@@ -26,7 +26,7 @@ const ControlPanel = props => {
             <option value="closed">Closed</option>
           </select>
         </div>
-        <div className="col-auto">
+        <div className="col-auto form-group">
           <label htmlFor="priority">Priority</label>
           <select
             onChange={props.handleChange}
