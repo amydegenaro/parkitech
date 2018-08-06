@@ -40,6 +40,7 @@ export const UserHome = props => {
       <h3>Coming soon:</h3>
       <ul>
         <li>Overview charts on dashboard</li>
+        <li>More filtering and icons in map view</li>
         <li>Assign users to specific tasks</li>
         <li>Filter tasks by user</li>
       </ul>
