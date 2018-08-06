@@ -172,6 +172,7 @@ form div {
   line-height: 2;
   color: #6b6b76;
   outline: none;
+  z-index: 100;
 }
 
 .control-label {
