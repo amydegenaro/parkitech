@@ -53,7 +53,6 @@ export const updateTicket = (ticket, listId, ticketId) => async dispatch => {
       ticket,
       listId
     })
-    console.log('RETURN THUNK DATA', data)
     dispatch(updatedTicket(data))
   } catch (err) {
     console.error(err)

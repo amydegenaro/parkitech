@@ -15,7 +15,6 @@ router.post('/', async (req, res, next) => {
     const {data} = await axios.get(
       `https://api.darksky.net/forecast/${key}/${lat},${lon}`
     )
-    console.log('WEATHER!!', data)
     res.json(data)
   } catch (err) {
     next(err)

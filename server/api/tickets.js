@@ -43,7 +43,6 @@ router.get('/:id', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    console.log('IN API ROUTE REQ', req.params)
     const ticket = await Ticket.findById(req.params.id)
     const list = await List.findById(req.body.listId)
     const updatedTicket = await ticket.update(req.body.ticket)
