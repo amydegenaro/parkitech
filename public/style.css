@@ -38,12 +38,6 @@ form div {
   font-size: 2.5em;
 }
 
-/* #task-form {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-} */
-
 #form-wrapper {
   padding-top: 20px;
   margin: auto;
@@ -76,9 +70,29 @@ form div {
   width: 100%;
 }
 
+#newTicket-map {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  align-items: center;
+}
+
 #loading {
-  height: 50px;
-  width: 50px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 10px;
+}
+
+#dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+#dash ul {
+  text-align: left;
 }
 
 .main {

@@ -11,6 +11,7 @@ class AddTicketForm extends Component {
   constructor() {
     super()
     this.state = {
+      loading: false,
       taskName: '',
       status: 'open',
       priority: 'low',
@@ -72,9 +73,11 @@ class AddTicketForm extends Component {
   }
 
   getCurrentLocation() {
+    this.setState({loading: true})
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
+          loading: false,
           viewport: {
             ...this.state.viewport,
             latitude: position.coords.latitude,
@@ -143,7 +146,7 @@ class AddTicketForm extends Component {
               </div>
             </div>
 
-            <label htmlFor="location">Task Location (find on map)</label>
+            <label htmlFor="location">Mark location on map</label>
             <button
               type="button"
               name="location"
@@ -154,20 +157,24 @@ class AddTicketForm extends Component {
             </button>
           </div>
 
-          <div className="flex-column">
-            <ReactMapGL
-              {...this.state.viewport}
-              onViewportChange={this._updateViewport}
-              mapboxApiAccessToken={TOKEN}
-              mapStyle="mapbox://styles/mapbox/outdoors-v9"
-            >
-              <Marker
-                longitude={this.state.viewport.longitude}
-                latitude={this.state.viewport.latitude}
+          <div id="newTicket-map">
+            {this.state.loading ? (
+              <img id="loading" src="https://i.gifer.com/WHda.gif" />
+            ) : (
+              <ReactMapGL
+                {...this.state.viewport}
+                onViewportChange={this._updateViewport}
+                mapboxApiAccessToken={TOKEN}
+                mapStyle="mapbox://styles/mapbox/outdoors-v9"
               >
-                <MapPin size={30} />
-              </Marker>
-            </ReactMapGL>{' '}
+                <Marker
+                  longitude={this.state.viewport.longitude}
+                  latitude={this.state.viewport.latitude}
+                >
+                  <MapPin size={30} />
+                </Marker>
+              </ReactMapGL>
+            )}
           </div>
         </form>
       </div>

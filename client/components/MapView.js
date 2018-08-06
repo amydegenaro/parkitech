@@ -15,23 +15,6 @@ const navStyle = {
   padding: '10px'
 }
 
-const popUp = task => {
-  console.log('CLICKED POPUP')
-  return (
-    <Popup
-      anchor="top"
-      latitude={task.latitude}
-      longitude={task.longitude}
-      // closeButton={true}
-      // closeOnClick={false}
-    >
-      <div>
-        <p>{task.name}</p>
-      </div>
-    </Popup>
-  )
-}
-
 class MapView extends Component {
   constructor() {
     super()
@@ -159,7 +142,7 @@ class MapView extends Component {
     ) : (
       <img
         id="loading"
-        src="https://thumbs.gfycat.com/SkinnySeveralAsianlion-size_restricted.gif"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
       />
     )
   }

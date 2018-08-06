@@ -9,13 +9,14 @@ if (!process.env.DARK_SKY_SECRET) {
   key = process.env.DARK_SKY_SECRET
 }
 
-router.get('/weather', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    const {lat, lon} = req.body
-    const weather = await axios.get(
+    const [lat, lon] = req.body
+    const {data} = await axios.get(
       `https://api.darksky.net/forecast/${key}/${lat},${lon}`
     )
-    res.json(weather)
+    console.log('WEATHER!!', data)
+    res.json(data)
   } catch (err) {
     next(err)
   }
