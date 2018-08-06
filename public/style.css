@@ -149,6 +149,7 @@ form div {
   flex-direction: column;
   width: 100%;
   max-width: 350px;
+  min-width: 300px;
   margin: 6px;
   height: 100%;
   box-sizing: border-box;
