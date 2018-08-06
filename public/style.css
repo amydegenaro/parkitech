@@ -95,6 +95,10 @@ form div {
   text-align: left;
 }
 
+#add-list {
+  border: none;
+}
+
 .main {
   padding: 0px 10px;
 }

@@ -54,7 +54,15 @@ class TaskView extends Component {
             return <List key={list.id} list={list} tickets={tickets} />
           })}
           <div className="list">
-            {this.state.showListForm ? (
+            <p className="list-header">Add another list</p>
+            <div className="list-item">
+              <AddListForm
+                className="task-header"
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
+            </div>
+            {/* {this.state.showListForm ? (
               <div className="flex-column list-item">
                 <button className="task-header" onClick={this.showForm}>
                   Cancel
@@ -68,7 +76,7 @@ class TaskView extends Component {
               <a className="list-header" onClick={this.showForm}>
                 Add another list
               </a>
-            )}
+            )} */}
           </div>
         </div>
       </div>

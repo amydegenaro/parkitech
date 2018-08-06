@@ -5,8 +5,13 @@ const AddListForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} name="listName" placeholder="List Name" />
-      <button type="submit">Add List</button>
+      <input
+        id="add-list"
+        onChange={handleChange}
+        name="listName"
+        placeholder="List Name"
+      />
+      <a type="submit">+</a>
     </form>
   )
 }
