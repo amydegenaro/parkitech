@@ -2,7 +2,7 @@
 
 ## New Features
 
-* Overview charts on dashboard
+* Overview charts on dashboard using D3
 * Create a "submit a ticket" view without login for public submissions?
 * Any user should be able to claim a new ticket
 * Create admin view that can assign or remove users to a specific task
@@ -24,3 +24,8 @@
 * Change link hover color
 * Find a better logo font or a logo
 * Add media queries?
+* Any other elements needed for PWAs
+
+## Other
+
+* Write more tests
