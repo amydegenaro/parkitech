@@ -3,9 +3,23 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getWeather} from '../store'
 
-/**
- * COMPONENT
- */
+const getUserWeather = fetchWeather => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        fetchWeather([pos.coords.latitude, pos.coords.longitude])
+      },
+      () => {
+        alert('Unable to retrieve location')
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 30000
+      }
+    )
+  } else alert('Geolocation not supported')
+}
+
 export const UserHome = props => {
   const {email, fetchWeather, weather} = props
 
@@ -15,29 +29,14 @@ export const UserHome = props => {
       <button
         type="button"
         className="btn btn-primary"
-        onClick={() => {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              pos => {
-                fetchWeather([pos.coords.latitude, pos.coords.longitude])
-              },
-              () => {
-                alert('Unable to retrieve location')
-              },
-              {
-                enableHighAccuracy: true,
-                timeout: 30000
-              }
-            )
-          } else alert('Geolocation not supported')
-        }}
+        onClick={() => getUserLocation(fetchWeather)}
       >
         Get weather
       </button>
       {weather.daily ? (
         <div>
           <h1>{Math.round(weather.currently.temperature)}&#176;F</h1>
-          <p>{weather.daily.summary}</p>{' '}
+          <p>{weather.daily.summary}</p>
         </div>
       ) : (
         <div />
