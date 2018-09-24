@@ -4,6 +4,17 @@ html {
   padding: 0;
 }
 
+@font-face {
+  font-family: 'DDC Hardware';
+  src: url('/fonts/DDCHardware_Personal_License/DDCHardware-Regular.otf')
+    format('opentype');
+}
+
+@font-face {
+  font-family: 'Haymaker';
+  src: url('/fonts/Haymaker_Personal_License/Haymaker.ttf') format('truetype');
+}
+
 html {
   /* background-color: #e0e2c8; */
 }
@@ -31,7 +42,8 @@ form div {
 }
 
 #header {
-  font-family: 'Megrim', cursive;
+  /* font-family: 'Megrim', cursive; */
+  font-family: 'Haymaker';
   padding-left: 0.5em;
   margin: 0;
   color: white;
