@@ -14,6 +14,7 @@
 ## Updates
 
 * Delete and/or archive tasks
+* Add back button on view task screen
 * More filtering and icons in map view
 * Add weather icons
 * Figure out how to get weather automatically (get location at login?)
@@ -25,6 +26,12 @@
 * Find a better logo font or a logo
 * Add media queries?
 * Any other elements needed for PWAs
+
+## Map
+
+* Make map resize with screen on task view
+* Make map center on view with all tasks
+* OR create a screen where an admin sets home map view
 
 ## Other
 
