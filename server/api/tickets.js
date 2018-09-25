@@ -53,3 +53,13 @@ router.put('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const ticket = await Ticket.findById(req.params.id)
+    await ticket.destroy()
+    res.json('Ticket deleted')
+  } catch (err) {
+    next(err)
+  }
+})
