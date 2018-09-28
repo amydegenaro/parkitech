@@ -43,6 +43,26 @@ class TicketBack extends Component {
         longitude: props.currentTicket.longitude
       }
     }))
+    window.addEventListener('resize', this._resize)
+    this._resize()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._resize)
+  }
+
+  _resize = () => {
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        width: this.props.width || window.innerWidth,
+        height: this.props.height || window.innerHeight * 0.85
+      }
+    })
+  }
+
+  _updateViewport = viewport => {
+    this.setState({viewport})
   }
 
   handleSubmit(evt) {
@@ -160,7 +180,7 @@ class TicketBack extends Component {
             {latitude ? (
               <ReactMapGL
                 {...this.state.viewport}
-                onViewportChange={viewport => this.setState({viewport})}
+                onViewportChange={this._updateViewport}
                 mapboxApiAccessToken={TOKEN}
                 mapStyle="mapbox://styles/mapbox/outdoors-v9"
               >

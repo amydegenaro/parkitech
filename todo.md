@@ -29,7 +29,7 @@
 
 ## Map
 
-- [ ] Make map resize with screen on task view
+- [x] Make map resize with screen on task view
 - [ ] Make map center on view with all tasks
 - [ ] OR create a screen where an admin sets home map view
 
