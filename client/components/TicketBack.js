@@ -26,6 +26,7 @@ class TicketBack extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
   }
 
   async componentDidMount() {
@@ -62,6 +63,11 @@ class TicketBack extends Component {
     this.props.history.push('/tasks')
   }
 
+  handleCancel(evt) {
+    evt.preventDefault()
+    this.props.history.push('/tasks')
+  }
+
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value
@@ -95,33 +101,35 @@ class TicketBack extends Component {
                 className="form-control"
               />
             </div>
-            <div className="form-group row">
-              <div className="col-auto">
-                <label htmlFor="status">Status</label>
-                <select
-                  onChange={this.handleChange}
-                  name="status"
-                  value={this.state.status}
-                  className="form-control"
-                >
-                  <option value="open">Open</option>
-                  <option value="assigned">Assigned</option>
-                  <option value="closed">Closed</option>
-                </select>
-              </div>
-              <div className="col-auto">
-                <label htmlFor="priority">Priority</label>
-                <select
-                  onChange={this.handleChange}
-                  name="priority"
-                  value={this.state.priority}
-                  className="form-control"
-                >
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-              </div>
+            <div className="form-row">
+              {/* <div className="form-group"> */}
+                <div className="col">
+                  <label htmlFor="status">Status</label>
+                  <select
+                    onChange={this.handleChange}
+                    name="status"
+                    value={this.state.status}
+                    className="form-control"
+                  >
+                    <option value="open">Open</option>
+                    <option value="assigned">Assigned</option>
+                    <option value="closed">Closed</option>
+                  </select>
+                </div>
+                <div className="col">
+                  <label htmlFor="priority">Priority</label>
+                  <select
+                    onChange={this.handleChange}
+                    name="priority"
+                    value={this.state.priority}
+                    className="form-control"
+                  >
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+              {/* </div> */}
             </div>
             <div className="form-group">
               <label htmlFor="listId">List</label>
@@ -141,6 +149,9 @@ class TicketBack extends Component {
             <div className="form-group">
               <button className="form-control btn btn-primary" type="submit">
                 Save
+              </button>
+              <button className="form-control btn btn-default" type="button" onClick={this.handleCancel}>
+                Cancel
               </button>
             </div>
           </div>

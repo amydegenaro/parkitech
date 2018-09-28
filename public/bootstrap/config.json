@@ -382,6 +382,7 @@
     "@hr-border": "@gray-lighter"
   },
   "css": [
+    "grid.less",
     "forms.less",
     "buttons.less"
   ],
