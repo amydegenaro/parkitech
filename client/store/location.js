@@ -1,7 +1,3 @@
-// store to hold user's location
-// create thunk to dispatch from component
-// also create a separate file to store reusable get user location function
-
 const GOT_LOCATION = 'GOT_LOCATION'
 
 export const gotUserLocation = coords => ({
@@ -34,5 +30,3 @@ export default function(state = [], action) {
       return state
   }
 }
-
-// on home component mount, get location from redux store and fetch weather with those coords
