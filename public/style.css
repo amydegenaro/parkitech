@@ -136,8 +136,7 @@ form div {
 .list-item {
   display: flex;
   flex-direction: row;
-  margin: 10px;
-  margin-bottom: 8px;
+  margin: 8px 0px;
   max-width: 300px;
   min-height: 20px;
   background-color: #fff;
@@ -168,6 +167,7 @@ form div {
   max-width: 350px;
   min-width: 300px;
   margin: 6px;
+  padding: 10px;
   height: 100%;
   box-sizing: border-box;
   display: inline-block;
