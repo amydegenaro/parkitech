@@ -64,6 +64,25 @@ async function seed() {
     longitude: -71.050945
   })
 
+  const hardscape = await Ticket.create({
+    name: 'Pressure Wash Hardscape',
+    status: 'open',
+    priority: 'medium',
+    description:
+      'Graffiti needs to be removed after FIGMENT festival, SE corner of P22',
+    latitude: 42.352853,
+    longitude: -71.055447
+  })
+
+  const pollinator = await Ticket.create({
+    name: 'Add Pollinator Habitat',
+    status: 'open',
+    priority: 'high',
+    description: 'More bees please!',
+    latitude: 42.361202,
+    longitude: -71.054123
+  })
+
   console.log(`seeded tickets`)
 
   await Promise.all([
@@ -71,7 +90,9 @@ async function seed() {
     art.setList(maintenance),
     tent.setList(events),
     bulbs.setList(horticulture),
-    cruise.setList(rangers)
+    cruise.setList(rangers),
+    hardscape.setList(maintenance),
+    pollinator.setList(horticulture)
   ])
 
   console.log(`seeded successfully`)

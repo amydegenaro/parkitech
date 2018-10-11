@@ -4,7 +4,7 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
-export {default as Dashboard} from './Dashboard'
+export {default as Home} from './Home'
 export {default as MapView} from './MapView'
 export {default as TaskView} from './TaskView'
 export {default as TicketBack} from './TicketBack'

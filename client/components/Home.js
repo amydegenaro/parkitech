@@ -41,14 +41,16 @@ export const UserHome = props => {
       ) : (
         <div />
       )}
-      <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-      <h3>Coming soon:</h3>
+      <a href="https://darksky.net/poweredby/">
+        <h6>Powered by Dark Sky</h6>
+      </a>
+      {/* <h3>Coming soon:</h3>
       <ul>
         <li>Overview charts on dashboard</li>
         <li>More filtering and icons in map view</li>
         <li>Assign users to specific tasks</li>
         <li>Filter tasks by user</li>
-      </ul>
+      </ul> */}
       <img src="https://static.thenounproject.com/png/132930-200.png" />
     </div>
   )
