@@ -14,7 +14,7 @@
 ## Updates
 
 - [ ] Delete and/or archive tasks
-- [ ] Add back button on view task screen
+- [x] Add back button on view task screen
 - [ ] More filtering and icons in map view
 - [ ] Add weather icons
 - [ ] Figure out how to get weather automatically (get location at login?)
