@@ -7,13 +7,15 @@ import allLists from './lists'
 import allTickets from './tickets'
 import currentTicket from './currentTicket'
 import weather from './weather'
+import location from './location'
 
 const reducer = combineReducers({
   user,
   weather,
   allLists,
   allTickets,
-  currentTicket
+  currentTicket,
+  location
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -26,3 +28,4 @@ export * from './lists'
 export * from './tickets'
 export * from './currentTicket'
 export * from './weather'
+export * from './location'
