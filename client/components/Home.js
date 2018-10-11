@@ -1,60 +1,55 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getWeather} from '../store'
 
-/**
- * COMPONENT
- */
-export const UserHome = props => {
-  const {email, fetchWeather, weather} = props
+class UserHome extends Component {
+  constructor() {
+    super()
+  }
 
-  return (
-    <div id="dash" className="main">
-      <h3>Welcome, {email}</h3>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              pos => {
-                fetchWeather([pos.coords.latitude, pos.coords.longitude])
-              },
-              () => {
-                alert('Unable to retrieve location')
-              },
-              {
-                enableHighAccuracy: true,
-                timeout: 30000
-              }
-            )
-          } else alert('Geolocation not supported')
-        }}
-      >
-        Get weather
-      </button>
-      {weather.daily ? (
-        <div>
-          <h1>{Math.round(weather.currently.temperature)}&#176;F</h1>
-          <p>{weather.daily.summary}</p>{' '}
-        </div>
-      ) : (
-        <div />
-      )}
-      <a href="https://darksky.net/poweredby/">
-        <h6>Powered by Dark Sky</h6>
-      </a>
-      {/* <h3>Coming soon:</h3>
-      <ul>
-        <li>Overview charts on dashboard</li>
-        <li>More filtering and icons in map view</li>
-        <li>Assign users to specific tasks</li>
-        <li>Filter tasks by user</li>
-      </ul> */}
-      <img src="https://static.thenounproject.com/png/132930-200.png" />
-    </div>
-  )
+  componentDidMount() {
+    if (this.props.location.length > 0) {
+      this.props.fetchWeather(this.props.location)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.props.fetchWeather(this.props.location)
+    }
+  }
+
+  render() {
+    const {email, fetchWeather, weather} = this.props
+
+    return (
+      <div id="dash" className="main">
+        <h3>Welcome, {email}</h3>
+        {weather.daily ? (
+          <div>
+            <div>
+              <h1>{Math.round(weather.currently.temperature)}&#176;F</h1>
+              <p>{weather.daily.summary}</p>
+            </div>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => getWeather(fetchWeather(this.props.location))}
+            >
+              Update
+            </button>
+            <a href="https://darksky.net/poweredby/">
+              <h6>Powered by Dark Sky</h6>
+            </a>
+          </div>
+        ) : (
+          <div />
+        )}
+        <img src="https://static.thenounproject.com/png/132930-200.png" />
+      </div>
+    )
+  }
 }
 
 /**
@@ -62,6 +57,7 @@ export const UserHome = props => {
  */
 const mapState = state => ({
   email: state.user.email,
+  location: state.location,
   weather: state.weather
 })
 
