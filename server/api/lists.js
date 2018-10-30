@@ -29,3 +29,5 @@ router.get('/:id/tickets', async (req, res, next) => {
     next(err)
   }
 })
+
+// '/lists/user/1'

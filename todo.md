@@ -5,11 +5,19 @@
 - [ ] Overview charts on dashboard using D3
 - [ ] Create a "submit a ticket" view without login for public submissions?
 - [ ] Any user should be able to claim a new ticket
-- [ ] Create admin view that can assign or remove users to a specific task
 - [ ] Filter tasks by user on Task and Map page
+
+### Admin View
+
+- [ ] Add admin to user model
+- [ ] Create admin view that can assign or remove users to a specific task
+- [x] Protect user routes for admins only
+- [ ] Add or remove users from linked organization (see list of all users)
+
+### Organization Ids
+
 - [ ] Add company or organization table to database and users
-- [ ] Login to a certain organization's board and only see those tasks
-- [ ] Protect routes to only view or edit your tasks
+- [ ] Only see tasks for your organization
 
 ## Updates
 
@@ -36,3 +44,7 @@
 ## Other
 
 - [ ] Write more tests
+
+## Security
+
+- [ ] Protect routes to only view or edit your own tasks
