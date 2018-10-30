@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {List} = require('../db/models')
-// const {adminGate, orgMatchGate} = require('../auth/utils')
 module.exports = router
 
 router.get('/', async (req, res, next) => {

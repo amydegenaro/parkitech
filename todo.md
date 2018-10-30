@@ -18,7 +18,7 @@
 
 - [x] Add company or organization table to database and users
 - [x] Add company id to routes for lists
-- [ ] Only see tasks for your organization
+- [x] Only see lists/tasks for your organization
 
 ## Updates
 
