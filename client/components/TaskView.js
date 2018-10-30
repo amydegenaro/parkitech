@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import List from './List'
-import {getAllLists, getAllTickets, addList} from '../store'
+import {getAllLists, getAllTickets, addList, removeList} from '../store'
 import AddListForm from './addListForm'
 
 class TaskView extends Component {
@@ -13,6 +13,7 @@ class TaskView extends Component {
     this.showForm = this.showForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   componentDidMount() {
     this.props.fetchAllLists()
@@ -37,8 +38,13 @@ class TaskView extends Component {
     })
   }
 
+  handleDelete(list) {
+    this.props.removeList(list)
+  }
+
   handleDrag(evt) {
     evt.preventDefault()
+    // unfinished
   }
 
   render() {
@@ -52,7 +58,7 @@ class TaskView extends Component {
             const tickets = this.props.allTickets.filter(
               ticket => ticket.listId === list.id
             )
-            return <List key={list.id} list={list} tickets={tickets} />
+            return <List key={list.id} list={list} tickets={tickets} handleDelete={this.handleDelete} />
           })}
           <div className="list">
             <p className="list-header">Add another list</p>
@@ -94,7 +100,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchAllLists: () => dispatch(getAllLists()),
   fetchAllTickets: () => dispatch(getAllTickets()),
-  addNewList: list => dispatch(addList(list))
+  addNewList: list => dispatch(addList(list)),
+  removeList: list => dispatch(removeList(list))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskView)

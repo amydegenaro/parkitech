@@ -1,11 +1,11 @@
 const router = require('express').Router()
-const {adminGate, orgMatchGate} = require('../auth/utils')
+const {adminGate, orgMatchGate, loginGate} = require('../auth/utils')
 module.exports = router
 
 // ROUTERS
 router.use('/users', adminGate, require('./users'))
 router.use('/org/:orgId', orgMatchGate, require('./orgRouter'))
-router.use('/weather', require('./weather'))
+router.use('/weather', loginGate, require('./weather'))
 
 // ERROR HANDLER
 router.use((req, res, next) => {

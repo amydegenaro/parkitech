@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {List} = require('../db/models')
+const {List, Task} = require('../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -30,6 +30,21 @@ router.get('/:id/tickets', async (req, res, next) => {
     const list = await List.findById(req.params.id)
     const tickets = await list.getTickets()
     res.json(tickets)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const list = await List.findById(req.params.id)
+    const listTasks = await list.getTickets()
+    if (listTasks.length > 0) {
+      res.sendStatus(403)
+    } else {
+      await list.destroy()
+      res.sendStatus(200)
+    }
   } catch (err) {
     next(err)
   }

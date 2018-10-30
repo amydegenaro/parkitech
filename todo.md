@@ -4,7 +4,7 @@
 
 - [ ] Overview charts on dashboard using D3
 - [ ] Create a "submit a ticket" view without login for public submissions?
-- [ ] Any user should be able to claim a new ticket
+- [ ] Any user should be able to claim a new/unassigned ticket
 - [ ] Filter tasks by user on Task and Map page
 
 ### Admin View
@@ -22,9 +22,9 @@
 
 ## Updates
 
+- [x] Delete lists
 - [ ] Delete and/or archive tasks
 - [x] Add back button on view task screen
-- [ ] More filtering and icons in map view
 - [ ] Add weather icons
 - [ ] Figure out how to get weather automatically (get location at login?)
 - [x] Reconsider name of Dashboard vs. Task pages
@@ -41,6 +41,7 @@
 - [x] Make map resize with screen on task view
 - [ ] Make map center on view with all tasks
 - [ ] OR create a screen where an admin sets home map view
+- [ ] More filtering and icons in map view
 
 ## Other
 
