@@ -1,19 +1,35 @@
 const router = require('express').Router()
 const {List} = require('../db/models')
+// const {adminGate, orgMatchGate} = require('../auth/utils')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const lists = await List.findAll()
+    const lists = await List.findAll({
+      where: {
+        organizationId: req.user.organizationId
+      }
+    })
     res.json(lists)
   } catch (err) {
     next(err)
   }
 })
 
+// WITHOUT ORGANIZATION ID CHECKS
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const lists = await List.findAll()
+//     res.json(lists)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
 router.post('/', async (req, res, next) => {
   try {
     const list = await List.create(req.body)
+    await list.setOrganization(req.user.organizationId)
     res.json(list)
   } catch (err) {
     next(err)
@@ -29,5 +45,3 @@ router.get('/:id/tickets', async (req, res, next) => {
     next(err)
   }
 })
-
-// '/lists/user/1'

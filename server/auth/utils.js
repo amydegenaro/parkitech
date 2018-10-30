@@ -7,14 +7,14 @@ module.exports = {
     }
   },
   idMatchGate: (req, res, next) => {
-    if (req.user && req.user.id === req.params.userId) {
+    if (req.user && req.user.id === +req.params.userId) {
       next()
     } else {
       res.sendStatus(401)
     }
   },
   orgMatchGate: (req, res, next) => {
-    if (req.user && req.user.orgId === req.params.orgId) {
+    if (req.user && req.user.organizationId === +req.params.orgId) {
       next()
     } else {
       res.sendStatus(401)

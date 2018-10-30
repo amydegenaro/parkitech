@@ -29,9 +29,10 @@ const updatedTicket = ticket => ({
   ticket
 })
 
-export const getAllTickets = () => async dispatch => {
+export const getAllTickets = () => async (dispatch, getState) => {
   try {
-    const {data} = await axios.get(`/api/tickets/`)
+    const orgId = getState().user.organizationId
+    const {data} = await axios.get(`/api/org/${orgId}/tickets/`)
     dispatch(gotAllTickets(data))
   } catch (err) {
     console.error(err)

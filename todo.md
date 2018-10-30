@@ -9,14 +9,15 @@
 
 ### Admin View
 
-- [ ] Add admin to user model
+- [x] Add admin to user model
 - [ ] Create admin view that can assign or remove users to a specific task
 - [x] Protect user routes for admins only
 - [ ] Add or remove users from linked organization (see list of all users)
 
 ### Organization Ids
 
-- [ ] Add company or organization table to database and users
+- [x] Add company or organization table to database and users
+- [x] Add company id to routes for lists
 - [ ] Only see tasks for your organization
 
 ## Updates

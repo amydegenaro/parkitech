@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, List, Ticket} = require('../server/db/models')
+const {User, List, Ticket, Organization} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -9,15 +9,33 @@ async function seed() {
 
   const users = await Promise.all([
     User.create({email: 'amy@email.com', password: '123'}),
-    User.create({email: 'guest@email.com', password: '123'})
+    User.create({email: 'guest@email.com', password: '123'}),
+    User.create({email: 'admin@email.com', password: '321', isAdmin: true})
   ])
 
   console.log(`seeded ${users.length} users`)
+
+  const greenway = await Organization.create({name: 'Greenway'})
+  const testOrg = await Organization.create({name: 'Test Org'})
+
+  await Promise.all([
+    greenway.setUsers(users)
+  ])
+
+  console.log(`seeded organizations`)
 
   const maintenance = await List.create({name: 'Maintenance'})
   const horticulture = await List.create({name: 'Horticulture'})
   const rangers = await List.create({name: 'Park Rangers'})
   const events = await List.create({name: 'Events'})
+
+  const test1 = await List.create({name: 'Test One'})
+  const test2 = await List.create({name: 'Test Two'})
+
+  await Promise.all([
+    greenway.setLists([maintenance, horticulture, rangers, events]),
+    testOrg.setLists([test1, test2])
+  ])
 
   console.log(`seeded lists`)
 

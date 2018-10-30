@@ -17,6 +17,7 @@ class TaskView extends Component {
   componentDidMount() {
     this.props.fetchAllLists()
     this.props.fetchAllTickets()
+    // this.props.user.organizationId
   }
 
   showForm() {
@@ -86,12 +87,13 @@ class TaskView extends Component {
 
 const mapStateToProps = state => ({
   allLists: state.allLists,
-  allTickets: state.allTickets
+  allTickets: state.allTickets,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchAllLists: () => dispatch(getAllLists()),
-  fetchAllTickets: id => dispatch(getAllTickets(id)),
+  fetchAllTickets: () => dispatch(getAllTickets()),
   addNewList: list => dispatch(addList(list))
 })
 

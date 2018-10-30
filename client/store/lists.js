@@ -13,9 +13,10 @@ const addedList = list => ({
   list
 })
 
-export const getAllLists = () => async dispatch => {
+export const getAllLists = () => async (dispatch, getState) => {
   try {
-    const {data} = await axios.get('/api/lists/')
+    const orgId = getState().user.organizationId
+    const {data} = await axios.get(`/api/org/${orgId}/lists/`)
     dispatch(gotAllLists(data))
   } catch (err) {
     console.error(err)
