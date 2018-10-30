@@ -39,18 +39,20 @@ export const getAllTickets = () => async (dispatch, getState) => {
   }
 }
 
-export const addTicket = (ticket, listId) => async dispatch => {
+export const addTicket = (ticket, listId) => async (dispatch, getState) => {
   try {
-    const {data} = await axios.post(`/api/tickets/list/${listId}/`, ticket)
+    const orgId = getState().user.organizationId
+    const {data} = await axios.post(`/api/org/${orgId}/tickets/list/${listId}/`, ticket)
     dispatch(addedTicket(data))
   } catch (err) {
     console.error(err)
   }
 }
 
-export const updateTicket = (ticket, listId, ticketId) => async dispatch => {
+export const updateTicket = (ticket, listId, ticketId) => async (dispatch, getState) => {
   try {
-    const {data} = await axios.put(`/api/tickets/${ticketId}`, {
+    const orgId = getState().user.organizationId
+    const {data} = await axios.put(`/api/org/${orgId}/tickets/${ticketId}`, {
       ticket,
       listId
     })

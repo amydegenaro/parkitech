@@ -16,16 +16,6 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// WITHOUT ORGANIZATION ID CHECKS
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const lists = await List.findAll()
-//     res.json(lists)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
 router.post('/', async (req, res, next) => {
   try {
     const list = await List.create(req.body)
@@ -45,3 +35,13 @@ router.get('/:id/tickets', async (req, res, next) => {
     next(err)
   }
 })
+
+// WITHOUT ORGANIZATION ID CHECKS
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const lists = await List.findAll()
+//     res.json(lists)
+//   } catch (err) {
+//     next(err)
+//   }
+// })

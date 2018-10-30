@@ -7,9 +7,10 @@ const gotTicket = ticket => ({
   ticket
 })
 
-export const getTicket = id => async dispatch => {
+export const getTicket = id => async (dispatch, getState) => {
   try {
-    const {data} = await axios.get(`/api/tickets/${id}`)
+    const orgId = getState().user.organizationId
+    const {data} = await axios.get(`/api/org/${orgId}/tickets/${id}`)
     dispatch(gotTicket(data))
   } catch (err) {
     console.error(err)
