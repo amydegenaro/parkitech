@@ -1,7 +1,8 @@
 # Parkitech
 
 _A geogtagged ticket board for park management_
-Deployed on Herouku at (https://parkitech.herokuapp.com)
+
+Deployed on Heroku at https://parkitech.herokuapp.com
 
 ## Background
 
