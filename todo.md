@@ -31,7 +31,7 @@
 
 ## Formatting
 
-- [ ] Change link hover color
+- [x] Change link hover color
 - [x] Find a better logo font or a logo
 - [ ] Add media queries?
 - [ ] Any other elements needed for PWAs?
