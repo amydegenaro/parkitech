@@ -4,6 +4,19 @@ html {
   padding: 0;
 }
 
+colors {
+  tan: #EDDECB;
+  lightTan: #f8f3ec;
+  darkGreen: #255045;
+  lightGreen: #61897F;
+  brown: #433B24;
+  lightOrange: #E58A66;
+  salmon: #ec8078;
+  lightSalmon: #DA6D54;
+  darkSalmon: #B34C3E;
+  superDarkGreen: #0D2B21;
+}
+
 @font-face {
   font-family: 'DDC Hardware';
   src: url('/fonts/DDCHardware_Personal_License/DDCHardware-Regular.otf')
@@ -17,13 +30,22 @@ html {
 
 html {
   /* background-color: #e0e2c8; */
+  /* background-color: #EDDECB; */
 }
 
 body {
   font-family: 'Roboto Slab', serif;
+  background-color: #61897F;
+  color: #fff;
 }
 
 a {
+  text-decoration: none;
+}
+
+/* Change the color of links on hover */
+a:hover {
+  color: #ec8078;
   text-decoration: none;
 }
 
@@ -47,8 +69,14 @@ form div {
   padding-left: 0.5em;
   padding-top: 0.5em;
   margin: 0;
-  color: white;
+  color: #f8f3ec;
   font-size: 2.5em;
+  display: inline-block;
+}
+
+#header:hover {
+  text-decoration: none;
+  color: #ec8078;
 }
 
 #form-wrapper {
@@ -158,7 +186,8 @@ form div {
 }
 
 .list {
-  background: #e2e4e6;
+  /* background-color: #e2e4e6; */
+  background-color: #f8f3ec;
   border-radius: 3px;
   box-sizing: border-box;
   display: flex;
@@ -171,7 +200,7 @@ form div {
   height: 100%;
   box-sizing: border-box;
   display: inline-block;
-  color: #003d29;
+  color: #255045;
 }
 
 .control-panel {
@@ -207,7 +236,8 @@ form div {
 
 #navbar {
   /* background-color: #003d29; */
-  background-color: #1f4b3c;
+  /* background-color: #1f4b3c; */
+  background-color: #255045;
   z-index: 100;
   width: 100%;
   margin: 0;
@@ -233,10 +263,8 @@ form div {
   font-size: 17px;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
-  /* background-color: #ddd; */
-  color: rgb(250, 244, 161);
+  color: #ec8078;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
