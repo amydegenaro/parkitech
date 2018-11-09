@@ -1,86 +1,54 @@
-// Colors
-$tan: #EDDECB;
-$lightTan: #f8f3ec;
-$superDarkGreen: #0D2B21;
-$darkGreen: #255045;
-$lightGreen: #61897F;
-$brown: #433B24;
-$lightOrange: #E58A66;
-$salmon: #ec8078;
-$lightSalmon: #DA6D54;
-$darkSalmon: #B34C3E;
-
-// Fonts
-// $font-header: 'DDC Hardware', serif;
-// $font-body: 'Haymaker', sans-serif;
-
 @font-face {
   font-family: 'DDC Hardware';
-  src: url('/fonts/DDCHardware_Personal_License/DDCHardware-Regular.otf')
-    format('opentype');
-}
+  src: url("/fonts/DDCHardware_Personal_License/DDCHardware-Regular.otf") format("opentype"); }
 
 @font-face {
   font-family: 'Haymaker';
-  src: url('/fonts/Haymaker_Personal_License/Haymaker.ttf') format('truetype');
-}
+  src: url("/fonts/Haymaker_Personal_License/Haymaker.ttf") format("truetype"); }
 
 body,
 html {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 body {
   font-family: 'Roboto Slab', serif;
-  background-color: $lightGreen;
-  color: #fff;
-
-  a {
-    text-decoration: none;
-  }
-
-  // Change the color of links on hover
-  a:hover {
-    color: $salmon;
-    text-decoration: none;
-  }
-}
+  background-color: #61897F;
+  color: #fff; }
+  body a {
+    text-decoration: none; }
+  body a:hover {
+    color: #ec8078;
+    text-decoration: none; }
 
 label {
-  display: block;
-}
+  display: block; }
 
 nav a {
   display: inline-block;
-  margin: 1em;
-}
+  margin: 1em; }
 
 form div {
-  display: inline-block;
-}
+  display: inline-block; }
 
 #header {
   font-family: 'Haymaker';
   padding-left: 0.5em;
   padding-top: 0.5em;
   margin: 0;
-  color: $lightTan;
+  color: #f8f3ec;
   font-size: 2.5em;
-  display: inline-block;
-}
+  display: inline-block; }
 
 #header:hover {
   text-decoration: none;
-  color: $salmon;
-}
+  color: #ec8078; }
 
 #form-wrapper {
   padding-top: 20px;
   margin: auto;
   width: 50%;
-  min-width: 300px;
-}
+  min-width: 300px; }
 
 #auth-wrapper {
   display: flex;
@@ -88,76 +56,61 @@ form div {
   padding-top: 20px;
   margin: auto;
   width: 50%;
-  min-width: 300px;
-}
+  min-width: 300px; }
 
-#auth-wrapper {
-  img {
-    height: 40px;
-    max-width: 200px;
-  }
+#auth-wrapper img {
+  height: 40px;
+  max-width: 200px; }
 
-  div {
-    margin: 10px;
-  }
-}
+#auth-wrapper div {
+  margin: 10px; }
 
 #auth-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-}
+  width: 100%; }
 
 #newTicket-map {
   display: flex;
   flex-direction: column;
   margin: 0px;
-  align-items: center;
-}
+  align-items: center; }
 
 #loading {
   width: 100%;
   max-width: 300px;
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 #dash {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  text-align: center;
-}
+  text-align: center; }
 
 #dash ul {
-  text-align: left;
-}
+  text-align: left; }
 
 #add-list {
-  border: none;
-}
+  border: none; }
 
 .main {
-  padding: 0px 10px;
-}
+  padding: 0px 10px; }
 
 .flex-column {
   display: flex;
   flex-direction: column;
-  margin: 0px;
-}
+  margin: 0px; }
 
 .flex-row {
   display: flex;
-  flex-direction: row;
-}
+  flex-direction: row; }
 
 .list-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-}
+  flex-wrap: wrap; }
 
 .list-item {
   display: flex;
@@ -169,22 +122,19 @@ form div {
   border-radius: 3px;
   box-shadow: 0 1px 0 #ccc;
   cursor: pointer;
-  padding: 0 4px;
-}
+  padding: 0 4px; }
 
 .list-header {
   margin: 0.8em;
   font-weight: bold;
-  font-size: 14px;
-}
+  font-size: 14px; }
 
 .task-header {
   font-size: 14px;
-  margin: 0.5em;
-}
+  margin: 0.5em; }
 
 .list {
-  background-color: $lightTan;
+  background-color: #f8f3ec;
   border-radius: 3px;
   box-sizing: border-box;
   display: flex;
@@ -197,8 +147,7 @@ form div {
   height: 100%;
   box-sizing: border-box;
   display: inline-block;
-  color: $darkGreen;
-}
+  color: #255045; }
 
 .control-panel {
   position: absolute;
@@ -214,88 +163,60 @@ form div {
   line-height: 2;
   color: #6b6b76;
   outline: none;
-  z-index: 100;
-}
+  z-index: 100; }
 
 .control-label {
   display: inline-block;
-  width: 100px;
-}
+  width: 100px; }
 
 .control-input {
-  margin-left: 20px;
-}
+  margin-left: 20px; }
 
 /* --------------NAVBAR-------------- */
-
 /* Add a black background color to the top navigation */
-
 #navbar {
-  background-color: $darkGreen;
+  background-color: #255045;
   z-index: 100;
   width: 100%;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 .topnav {
-  overflow: hidden;
-
-  a {
+  overflow: hidden; }
+  .topnav a {
     float: left;
     display: block;
-    color: $lightTan;
+    color: #f8f3ec;
     text-align: center;
     padding: 0px 5px;
     text-decoration: none;
-    font-size: 17px;
-  }
-
-  a:hover {
-    color: $salmon;
-  }
-
-  a:first-child {
-    display: none;
-  }
-
-  // Hide the link that should open and close the topnav on small screens
-  .icon {
-    display: none;
-  }
-}
-
+    font-size: 17px; }
+  .topnav a:hover {
+    color: #ec8078; }
+  .topnav a:first-child {
+    display: none; }
+  .topnav .icon {
+    display: none; }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
   .topnav a:first-child {
-    display: block;
-  }
+    display: block; }
   .topnav a:not(:first-child) {
-    display: none;
-  }
+    display: none; }
   .topnav a.icon {
     float: right;
-    display: block;
-  }
-}
+    display: block; } }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 600px) {
   .topnav.responsive {
-    position: relative;
-  }
+    position: relative; }
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
-    top: 0;
-  }
+    top: 0; }
   .topnav.responsive a {
     float: none;
     display: block;
-    text-align: left;
-  }
-}
-
-
-
+    text-align: left; } }
