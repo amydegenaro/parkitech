@@ -57,13 +57,11 @@ form div {
   margin: auto;
   width: 50%;
   min-width: 300px; }
-
-#auth-wrapper img {
-  height: 40px;
-  max-width: 200px; }
-
-#auth-wrapper div {
-  margin: 10px; }
+  #auth-wrapper img {
+    height: 40px;
+    max-width: 200px; }
+  #auth-wrapper div {
+    margin: 10px; }
 
 #auth-form {
   display: flex;
@@ -74,8 +72,8 @@ form div {
 #newTicket-map {
   display: flex;
   flex-direction: column;
-  margin: 0px;
-  align-items: center; }
+  align-items: center;
+  margin: 0px; }
 
 #loading {
   width: 100%;
@@ -88,9 +86,8 @@ form div {
   align-items: center;
   width: 100%;
   text-align: center; }
-
-#dash ul {
-  text-align: left; }
+  #dash ul {
+    text-align: left; }
 
 #add-list {
   border: none; }
@@ -134,11 +131,11 @@ form div {
   margin: 0.5em; }
 
 .list {
+  display: flex;
+  flex-direction: column;
   background-color: #f8f3ec;
   border-radius: 3px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   max-width: 350px;
   min-width: 300px;
@@ -173,7 +170,6 @@ form div {
   margin-left: 20px; }
 
 /* --------------NAVBAR-------------- */
-/* Add a black background color to the top navigation */
 #navbar {
   background-color: #255045;
   z-index: 100;

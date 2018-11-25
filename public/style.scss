@@ -14,6 +14,29 @@ $darkSalmon: #B34C3E;
 // $font-header: 'DDC Hardware', serif;
 // $font-body: 'Haymaker', sans-serif;
 
+@mixin wrapper {
+  padding-top: 20px;
+  margin: auto;
+  width: 50%;
+  min-width: 300px;
+}
+
+@mixin flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
 @font-face {
   font-family: 'DDC Hardware';
   src: url('/fonts/DDCHardware_Personal_License/DDCHardware-Regular.otf')
@@ -76,22 +99,13 @@ form div {
 }
 
 #form-wrapper {
-  padding-top: 20px;
-  margin: auto;
-  width: 50%;
-  min-width: 300px;
+  @include wrapper()
 }
 
 #auth-wrapper {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  margin: auto;
-  width: 50%;
-  min-width: 300px;
-}
+  @include flex-col();
+  @include wrapper();
 
-#auth-wrapper {
   img {
     height: 40px;
     max-width: 200px;
@@ -103,17 +117,13 @@ form div {
 }
 
 #auth-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-center();
   width: 100%;
 }
 
 #newTicket-map {
-  display: flex;
-  flex-direction: column;
+  @include flex-center();
   margin: 0px;
-  align-items: center;
 }
 
 #loading {
@@ -123,15 +133,13 @@ form div {
 }
 
 #dash {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-center();
   width: 100%;
   text-align: center;
-}
 
-#dash ul {
-  text-align: left;
+  ul {
+    text-align: left;
+  }
 }
 
 #add-list {
@@ -143,25 +151,21 @@ form div {
 }
 
 .flex-column {
-  display: flex;
-  flex-direction: column;
+  @include flex-col();
   margin: 0px;
 }
 
 .flex-row {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
 }
 
 .list-container {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   flex-wrap: wrap;
 }
 
 .list-item {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   margin: 8px 0px;
   max-width: 300px;
   min-height: 20px;
@@ -184,11 +188,10 @@ form div {
 }
 
 .list {
+  @include flex-col();
   background-color: $lightTan;
   border-radius: 3px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   max-width: 350px;
   min-width: 300px;
@@ -228,8 +231,6 @@ form div {
 
 /* --------------NAVBAR-------------- */
 
-/* Add a black background color to the top navigation */
-
 #navbar {
   background-color: $darkGreen;
   z-index: 100;
@@ -268,15 +269,19 @@ form div {
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
-  .topnav a:first-child {
-    display: block;
-  }
-  .topnav a:not(:first-child) {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
+  .topnav {
+    a:first-child {
+      display: block;
+    }
+
+    a:not(:first-child) {
+      display: none;
+    }
+
+    a.icon {
+      float: right;
+      display: block;
+    }
   }
 }
 
