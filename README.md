@@ -12,9 +12,21 @@ Parkitech was created to fill a technology gap often found in small non-profits 
 
 Parkitech was originally built as a 4-day hackathon project for my Grace Hopper program. It was built using Node, Express, PostgreSQL, Sequelize, React, Redux, and Mapbox.
 
-## Installation
+## Getting Started
 
-Fork and clone this repository, install dependencies with `npm install`, and then `npm run start-dev` to start a local development environment.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+
+### Set-Up
+
+Parkitech runs in a Node environment and requires two PostgreSQL databases: one named "parkitech" and another for testing named "parkitech-testing."
+
+Fork and clone this repository and follow the installation instructions below.
+
+### Installation
+
+Install dependencies with `npm install`, and then seed the database with `npm run seed`
+
+Start the local development environment with `npm run start-dev`
 
 ## Author
 
