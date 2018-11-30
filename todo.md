@@ -31,6 +31,7 @@
 
 ## Formatting
 
+- [ ] Fix navbar dropdown on mobile, remove "menu" and move hamburger
 - [x] Change link hover color
 - [x] Find a better logo font or a logo
 - [ ] Add media queries?
@@ -46,6 +47,7 @@
 ## Other
 
 - [ ] Write more tests
+- [ ] Better logo, replace "A" with a tree
 
 ## Security
 
