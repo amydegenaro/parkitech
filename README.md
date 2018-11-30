@@ -10,7 +10,7 @@ Parkitech was created to fill a technology gap often found in small non-profits 
 
 ## Built With
 
-Parkitech was originally built as a 4-day hackathon project for my Grace Hopper program. It was built using Node, Express, PostgreSQL, Sequelize, React, Redux, and Mapbox.
+Parkitech was originally built as a 4-day hackathon project for my Grace Hopper program. It was built using Node, Express, PostgreSQL, Sequelize, React, Redux, and Mapbox and initialized from Fullstack Academy's Boilermaker repository.
 
 ## Getting Started
 
