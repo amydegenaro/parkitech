@@ -17,8 +17,8 @@ class AddTicketForm extends Component {
       priority: 'low',
       description: '',
       viewport: {
-        width: window.innerWidth,
-        height: 400,
+        width: '100%',
+        height: '100%',
         latitude: 42.3601,
         longitude: -71.0589,
         zoom: 14
@@ -42,8 +42,8 @@ class AddTicketForm extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth
-        // height: this.props.height || window.innerHeight
+        width: this.props.width || '100%',
+        height: this.props.height || '100%'
       }
     })
   }
@@ -99,12 +99,9 @@ class AddTicketForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="flex-row">
+        <form onSubmit={this.handleSubmit} className="flex-form">
           <div id="form-wrapper" className="flex-column">
-            <button className="form-control btn btn-primary" type="submit">
-              Add Task
-            </button>
             <div className="form-group">
               <label htmlFor="taskName">Name</label>
               <input
@@ -123,7 +120,7 @@ class AddTicketForm extends Component {
                 className="form-control"
               />
             </div>
-            <div className="form-group row">
+            <div className="form-group">
               <div className="col-auto">
                 <label htmlFor="status">Status</label>
                 <select
@@ -161,28 +158,33 @@ class AddTicketForm extends Component {
             >
               Go to Current Location
             </button>
+            <button className="form-control btn btn-primary" type="submit">
+              Add Task
+            </button>
           </div>
 
-          <div id="newTicket-map">
-            {this.state.loading ? (
-              <img id="loading" src="https://i.gifer.com/WHda.gif" />
-            ) : (
-              <ReactMapGL
-                {...this.state.viewport}
-                onViewportChange={this._updateViewport}
-                mapboxApiAccessToken={TOKEN}
-                mapStyle="mapbox://styles/mapbox/outdoors-v9"
-              >
-                <Marker
-                  longitude={this.state.viewport.longitude}
-                  latitude={this.state.viewport.latitude}
-                >
-                  <MapPin size={30} />
-                </Marker>
-              </ReactMapGL>
-            )}
-          </div>
         </form>
+
+        <div className="flex-map">
+          {this.state.loading ? (
+            <img id="loading" src="https://i.gifer.com/WHda.gif" />
+          ) : (
+            <ReactMapGL
+              {...this.state.viewport}
+              onViewportChange={this._updateViewport}
+              mapboxApiAccessToken={TOKEN}
+              mapStyle="mapbox://styles/mapbox/outdoors-v9"
+            >
+              <Marker
+                longitude={this.state.viewport.longitude}
+                latitude={this.state.viewport.latitude}
+              >
+                <MapPin size={30} />
+              </Marker>
+            </ReactMapGL>
+          )}
+        </div>
+
       </div>
     )
   }

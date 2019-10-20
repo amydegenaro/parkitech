@@ -230,6 +230,14 @@ form div {
   margin-left: 20px;
 }
 
+.flex-form {
+  flex-basis: 35%;
+}
+
+.flex-map {
+  flex-basis: 65%;
+}
+
 /* --------------NAVBAR-------------- */
 
 /* Add a black background color to the top navigation */

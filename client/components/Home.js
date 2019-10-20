@@ -39,13 +39,20 @@ class UserHome extends Component {
             >
               Update
             </button>
-            <a href="https://darksky.net/poweredby/">
-              <h6>Powered by Dark Sky</h6>
-            </a>
           </div>
         ) : (
-          <div />
+          <button
+            type="button"
+            className="btn btn-primary btn-sm"
+            onClick={() => getWeather(fetchWeather(this.props.location))}
+          >
+            Get Weather
+          </button>
+          // <div />
         )}
+        <a href="https://darksky.net/poweredby/">
+          <h6>Powered by Dark Sky</h6>
+        </a>
         <img src="https://static.thenounproject.com/png/132930-200.png" />
       </div>
     )

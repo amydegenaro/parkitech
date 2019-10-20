@@ -6,6 +6,7 @@
 - [ ] Create a "submit a ticket" view without login for public submissions?
 - [ ] Any user should be able to claim a new/unassigned ticket
 - [ ] Filter tasks by user on Task and Map page
+- [ ] Add ticket type categorization
 
 ### Admin View
 
@@ -13,12 +14,23 @@
 - [ ] Create admin view that can assign or remove users to a specific task
 - [x] Protect user routes for admins only
 - [ ] Add or remove users from linked organization (see list of all users)
+- [ ] Approve or deny public submissions
+
+### Park Ranger Account
+
+- [ ] Create different form for ranger tickets
+
+### Account Settings
+
+- [ ] Ability to save home location for weather and map default
+- [ ] Request organization affiliation
 
 ### Organization Ids
 
 - [x] Add company or organization table to database and users
 - [x] Add company id to routes for lists
 - [x] Only see lists/tasks for your organization
+- [ ] Show organization name in header and/or homepage
 
 ## Updates
 
@@ -42,6 +54,7 @@
 - [ ] Make map center on view with all tasks
 - [ ] OR create a screen where an admin sets home map view
 - [ ] More filtering and icons in map view
+- [ ] Show form and map side by side in desktop view when viewing or adding tasks
 
 ## Other
 

@@ -17,8 +17,8 @@ class TicketBack extends Component {
       description: '',
       listId: '',
       viewport: {
-        width: window.innerWidth,
-        height: 400,
+        width: '100%',
+        height: '100%',
         latitude: 0,
         longitude: 0,
         zoom: 14
@@ -55,8 +55,8 @@ class TicketBack extends Component {
     this.setState({
       viewport: {
         ...this.state.viewport,
-        width: this.props.width || window.innerWidth,
-        height: this.props.height || window.innerHeight * 0.85
+        width: this.props.width || '100%',
+        height: this.props.height || '100%'
       }
     })
   }
@@ -97,9 +97,10 @@ class TicketBack extends Component {
   render() {
     const {latitude, longitude} = this.props.currentTicket
 
+    console.log(this.state.viewport)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="flex-row">
+        <form onSubmit={this.handleSubmit} className="flex-form">
           <div id="form-wrapper" className="flex-column">
             <div className="form-group">
               <label htmlFor="taskName">Name</label>
@@ -121,7 +122,7 @@ class TicketBack extends Component {
                 className="form-control"
               />
             </div>
-            <div className="form-row">
+            <div className="form-group">
               {/* <div className="form-group"> */}
                 <div className="col">
                   <label htmlFor="status">Status</label>
@@ -175,24 +176,24 @@ class TicketBack extends Component {
               </button>
             </div>
           </div>
-
-          <div className="flex-column">
-            {latitude ? (
-              <ReactMapGL
-                {...this.state.viewport}
-                onViewportChange={this._updateViewport}
-                mapboxApiAccessToken={TOKEN}
-                mapStyle="mapbox://styles/mapbox/outdoors-v9"
-              >
-                <Marker latitude={latitude} longitude={longitude}>
-                  <MapPin size={30} />
-                </Marker>
-              </ReactMapGL>
-            ) : (
-              <p>Loading coordinates...</p>
-            )}
-          </div>
         </form>
+
+        <div className="flex-map">
+          {latitude ? (
+            <ReactMapGL
+              {...this.state.viewport}
+              onViewportChange={this._updateViewport}
+              mapboxApiAccessToken={TOKEN}
+              mapStyle="mapbox://styles/mapbox/outdoors-v9"
+            >
+              <Marker latitude={latitude} longitude={longitude}>
+                <MapPin size={30} />
+              </Marker>
+            </ReactMapGL>
+          ) : (
+            <p>Loading coordinates...</p>
+          )}
+        </div>
       </div>
     )
   }
