@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/:id/tickets', async (req, res, next) => {
   try {
-    const list = await List.findById(req.params.id)
+    const list = await List.findByPk(req.params.id)
     const tickets = await list.getTickets()
     res.json(tickets)
   } catch (err) {
@@ -37,7 +37,7 @@ router.get('/:id/tickets', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const list = await List.findById(req.params.id)
+    const list = await List.findByPk(req.params.id)
     const listTasks = await list.getTickets()
     if (listTasks.length > 0) {
       res.sendStatus(403)
